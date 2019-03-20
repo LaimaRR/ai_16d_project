@@ -1,0 +1,2 @@
+print("Labas Laima")
+
