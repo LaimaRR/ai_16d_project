@@ -6,7 +6,7 @@ PROJECT AIM: to show my Python basics, create GitHub profile.
 
 
 
-## Usage
+## Usage:
 
 ### Navigate with two buttons: key-left & key-right.
 
