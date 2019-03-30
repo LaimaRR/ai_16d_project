@@ -1,2 +1,0 @@
-print("Labas Laima")
-
