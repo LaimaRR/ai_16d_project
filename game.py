@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 import random
 import sys
 
@@ -7,15 +7,15 @@ pygame.init()
 langas_plotis = 800
 langas_aukstis = 600
 
-langas_spalva = (102,0,32)
+langas_spalva = (102, 0, 32)
 mano_langelis_spalva = (172, 230, 0)
-krituliai_spalva = (51,119,255)
+krituliai_spalva = (51, 119, 255)
 
 mano_langelis_dydis = 50
 mano_langelis_pozicija = [langas_plotis/2, langas_aukstis-2*mano_langelis_dydis]
 
 krituliai_dydis = 50
-krituliai_pozicija = [random.randint(0,langas_plotis-krituliai_dydis), 0]
+krituliai_pozicija = [random.randint(0, langas_plotis-krituliai_dydis), 0]
 krituliai_listas = [krituliai_pozicija]
 krituliai_greitis = 10
 
@@ -24,7 +24,7 @@ screen = pygame.display.set_mode((langas_plotis, langas_aukstis))
 game_over = False
 
 rezultatas = 0
-rezultatas_spalva = (255,255,0)
+rezultatas_spalva = (255, 255, 0)
 
 clock = pygame.time.Clock()
 
@@ -41,9 +41,6 @@ def lygis_nustatymas(rezultatas, krituliai_greitis):
 		krituliai_greitis = 15
 	return krituliai_greitis
 
-	# kitoks lygio nystatymas
-	# krituliai_greitis = rezultatas/5 + 1
-	# return krituliai_greitis
 
 def krituliai_sumazinimas(krituliai_listas):
 	kritul_uzlaikymas = random.random()
@@ -61,11 +58,9 @@ def krituliai_kritimas(krituliai_listas, rezultatas):
 		if krituliai_pozicija[1] >= 0 and krituliai_pozicija[1] < langas_aukstis:
 			krituliai_pozicija[1] += krituliai_greitis
 		else:
-			# krituliai_pozicija[0] = random.randint(0, langas_plotis - krituliai_dydis)
-			# krituliai_pozicija[1] = 0
 			krituliai_listas.pop(idx)
 			rezultatas += 1
-	return rezultatas 
+	return rezultatas
 
 def susidurimas_patikra(krituliai_listas, mano_langelis_pozicija):
 	for krituliai_pozicija in krituliai_listas:
@@ -96,7 +91,6 @@ while not game_over:
 			x = mano_langelis_pozicija[0]
 			y = mano_langelis_pozicija[1]
 
-			# mygtuku ijungimas
 			if event.key == pygame.K_LEFT:
 				x -= mano_langelis_dydis
 			elif event.key == pygame.K_RIGHT:
@@ -104,19 +98,8 @@ while not game_over:
 
 			mano_langelis_pozicija = [x,y]
 
-	# kad bendrasis langas nusidazytu juodai, toje  vietoje, kai mano langelis pereina kitur		
 	screen.fill(langas_spalva)
 
-	# #Krituliu judejimas-kritimas
-	# if krituliai_pozicija[1] >= 0 and krituliai_pozicija[1] < langas_aukstis:
-	# 	krituliai_pozicija[1] += krituliai_greitis
-	# else:
-	# 	krituliai_pozicija[0] = random.randint(0, langas_plotis - krituliai_dydis)
-	# 	krituliai_pozicija[1] = 0
-
-	# if susidurimas(mano_langelis_pozicija, krituliai_pozicija):
-	# 	game_over = True
-	# 	break
 
 	krituliai_sumazinimas(krituliai_listas)
 	rezultatas = krituliai_kritimas(krituliai_listas, rezultatas)
@@ -132,10 +115,9 @@ while not game_over:
 
 	krituliai_papildymas(krituliai_listas)
 
-	#pygame.draw.rect(screen, krituliai_spalva, (krituliai_pozicija[0], krituliai_pozicija[1], krituliai_dydis, krituliai_dydis))
 	pygame.draw.rect(screen, mano_langelis_spalva, (mano_langelis_pozicija[0], mano_langelis_pozicija[1], mano_langelis_dydis, mano_langelis_dydis))
-	
-	
+
+
 	clock.tick(30)
 
 	pygame.display.update()
@@ -143,5 +125,5 @@ while not game_over:
 
 
 	#  Made by Laima Ramane
-	#  Thanks to Keith Galli  
+	#  Thanks to Keith Galli
 	#  in https://www.youtube.com/watch?v=-8n91btt5d8
